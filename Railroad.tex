@@ -1,0 +1,65 @@
+% Railroad.tex
+%
+%		J. Michael Dean, MD, MBA
+%		December 5, 2019
+%
+%		This is a document to provide the history and implementation of my railroad experiences.
+%
+%		It is written in LaTeX.
+
+% !TEX TS-program = pdflatexmk
+\documentclass[12pt,twoside]{book}
+
+%%%% Now include the standard data center command file, which will
+%            take care of all the package requirements and special commands.
+\usepackage{railroadSetup}
+
+
+
+\fancypagestyle{protocol}{\fancyhf{}%
+    \fancyhead[RO,LE] {Page \thepage ~of \pageref{LastPage}}%
+    \fancyhead[RE,LO] {Mike's Railroad Book}%
+    \renewcommand \headrulewidth{.4pt}
+    \renewcommand \footrulewidth{.4pt}}
+
+
+\makeindex
+
+\begin{document}
+
+%%%% Front matter of the book
+\frontmatter
+\pagestyle{empty}
+\include{title}
+\pagestyle{protocol}
+\dominitoc
+\tableofcontents
+\listoftables
+\listoffigures
+
+%%%% Main matter of the book
+\mainmatter
+
+\part{The Network and Protocol}
+\include{chapters/testChapter}
+
+
+\part{Good Clinical Practice}
+\include{chapters/testChapter}
+
+\part{Study Management}
+\include{chapters/testChapter}
+
+
+
+
+%%%% Back matter of the book
+\backmatter
+\refstepcounter{chapter}
+\addcontentsline{toc}{chapter}{Index}
+\footnotesize
+\printindex
+\normalsize
+\refstepcounter{chapter}
+
+\end{document}
