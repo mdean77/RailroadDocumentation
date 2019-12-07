@@ -19,11 +19,25 @@
 \fancypagestyle{protocol}{\fancyhf{}%
     \fancyhead[RO,LE] {Page \thepage ~of \pageref{LastPage}}%
     \fancyhead[RE,LO] {Mike's Railroad Book}%
+       \fancyfoot[C]{\scriptsize Documentation and History of Railroad\\
+   Compilation Date: \today ~\\}
     \renewcommand \headrulewidth{.4pt}
     \renewcommand \footrulewidth{.4pt}}
 
 
+%\usepackage[pdftex]{graphicx}
+%\usepackage{tikz}
+
+\usepackage[pdftex,colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue,
+urlcolor=blue,plainpages=false]{graphicx,hyperref}
+%\usepackage{pdfpages}
+\usepackage[normalem]{ulem}
+\usepackage{soul}
+
+
 \makeindex
+
+\usepackage[letterpaper,margin=1.0in]{geometry}
 
 \begin{document}
 
@@ -31,7 +45,7 @@
 \frontmatter
 \pagestyle{empty}
 \include{title}
-\pagestyle{protocol}
+
 \dominitoc
 \tableofcontents
 \listoftables
@@ -39,7 +53,7 @@
 
 %%%% Main matter of the book
 \mainmatter
-
+\pagestyle{protocol}
 \part{Club Module}
 \include{chapters/testChapter}
 
