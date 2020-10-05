@@ -23,16 +23,19 @@ items on the computer using various pieces of software.  ThingiVerse is a web si
 simply cannot be printed with a fused deposition modeling (FDM) type of printer.  The Ender 3 is an FDM printer.  This heats up plastic and deposits it in layers, and after depositing one layer, the print head rises 0.1 to 0.2 mm (depending on settings) and deposits the next layer.  Extremely small or detailed parts do not print well,
 and it is possible to end up with a mess of plastic spaghetti with certain patterns.  If I want to get into small detailed parts, I will be forced to buy a different type of 3d printer based on stereolithography (resin printers).  At the time of this writing, in December 2019, I will defer on this next technology.
 
+\section{Original Prusa i3 MK3S Printer}
+In July 2020, in the midst of my fifth month in pandemic experience, I ordered the Prusa printer in kit form, which arrived in August.  The kit was challenging to build, but now I understand how the printer works.  I was reasonably careful, and the machine has worked very well.  Its primary advantages include filament detection, autoloading, autounloading, automatic bed leveling, and Z-level adjustments.  It is also a direct extrusion machine (not a Bowden tube machine) and has a far superior extrusion mechanism compared with the Ender.
+
 \section{Setting up Octoprint with Raspberry Pi}
 
 I decided to try a piece of software called Octoprint.  The first step was to 3d print some parts that will hold a camera for the Raspberry PI, as well as some enhancements
-of the Ender 3.  This was bizarre (enhancing my printer by printing enhancement parts).  I am using a Raspberry Pi 3, and I simply downloaded the Octoprint software from the Internet,
-installed it on the Pi, and turned it on.  It works.\\
+of the Ender 3.  This was bizarre (enhancing my printer by printing enhancement parts).  After I replaced the Ender 3 with my Prusa machine, I had to print a different set of parts, which was easily accomplished.  The camera enables me to see the status of the print, and also allows creating a time lapse movie of the overall print.\\
 
-The settings are to make sure my desktop computer is on the Dean Network (not DeanHome), because the Pi is on Dean Network.  Then I simply go to a browser
-and aim at http://octopi.local and it logs into the Raspberry Pi with the interface for controlling the Ender 3.  I don't have to mess with the operating system or finding the software,
-as this is automatically set up.  I need to upload files to the Pi in order for them to get printed.  The software has a cool feature of time lapse photography, so at the end, you have
-a cool movie of the entire print.\\
+The settings are to make sure my desktop computer is on the DeanEERO, because the Pi is on DeanEERO.  Then I simply go to a browser
+and aim at http://octopi.local and it logs into the Raspberry Pi with the interface for controlling the printer.  I don't have to mess with the operating system or finding the software,
+as this is automatically set up.  I need to upload files to the Pi in order for them to get printed, or alternatively, I can print from the SD
+card that is in the printer.  I have noticed that if I print from the SD card, Octoprint does not have access to the GCODE, time lapse does not work, and it is possible to accidentally abort the print.  Therefore, I generally start an SD card print from the printer LCD and do not make any adjustments via the OctoPrint interface.\\
+
 
 The user name is mdean77 and the password is Usual98a.  \\
 
@@ -42,47 +45,54 @@ There are several types of software available for doing 3D design on the compute
 end product that turns out to be completely free for hobbyists.  It has a steep learning curve, which I have attempted to climb, and it is certainly not the easiest option
 available.  There are other products but Fusion is where I landed.  After completing a design, I export the file as an STL file.\\
 
-The STL file now needs to be ``sliced'' into the individual layers that the FDM printer will lay down, one by one.  I have been using software called Cura, because it is free
-and because it it relatively simple to use.  There are numerous setting that can be adjusted.  After pushing the button to tell Cura to slice the model, we end up with a GCODE file.  This file needs to be downloaded to the Pi and then into the printer, and has the instructions for the printer to print the object.
-
+The STL file now needs to be ``sliced'' into the individual layers that the FDM printer will lay down, one by one. The slicer software produces GCODE, which provides the printer with exact instructions for conducting the print.  I have three slicer software packages.  Cura was the first I used because it was included with the Ender 3, was free, and is very functional.  I purchased Simplify3D after a year, and this software allows having multiple processes.  This means that I can change settings in the middle of a print.  Finally, I have been using PrusaSlicer, which is provided in conjunction with the Original Prusa i3 MK3S printer that has replaced my Ender 3.  Each of these slicers has advantages and disadvantages, and it is unclear that any one of them is particularly superior to the others.\\
 
 \section{Using Parts to Hide Accessory Decoders}
+To learn Fusion 360 I found a tutorial that built a box with a snap on lid.  This led me to the idea of creating small boxes that could
+contain the accessory decoders used to control my turnouts (Figure \ref{fig:naked}).  I have a large number of turnouts and it is obviously not an attractive seen to have decoders attached in haphazard manner.  For this reason, I created a box design that would contain the decoder and simplify the overall appearance (Figure \ref{fig:decoderInBox}).  Finally, I could make different versions depending on how many decoders were located in different areas of the layout, as shown in Figure \ref{fig:decoderBoxes}.
 
-    \begin{figure*}
+	\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.4\textwidth]{./figures/printer/TwoNakedDecoders.jpg}
+	\caption{Accessory decoders taped to underside of layout.}
+	\label{fig:naked}
+	\end{figure}
+	
+	\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.4\textwidth]{./figures/printer/DecoderInBox.jpg}
+	\caption{Decoder in 3D box, simplifying the appearance.}
+		\label{fig:decoderInBox}
+	\end{figure}
+	
+    \begin{figure}[htpb]
         \centering
-        \begin{subfigure}[b]{width=\textwidth}
+        \begin{subfigure}[b]{0.475\textwidth}
             \centering
-            \includegraphics[width=0.475\textwidth]{./figures/printer/TwoBoxes.jpg}
-           % \caption[Network2]%
-           % {{\small Network 1}}    
-            \label{fig:mean and std of net14}
+            \includegraphics[width=\textwidth]{./figures/printer/TwoBoxes.jpg}
+           \caption{Print of two boxes}
         \end{subfigure}
         \hfill
-        \begin{subfigure}[b]
+        \begin{subfigure}[b]{0.475\textwidth}
             \centering 
-            \includegraphics[width=0.475\textwidth]{./figures/printer/ThreeBoxes.jpg}
-          %  \caption[]%
-           % {{\small Network 2}}    
-            \label{fig:mean and std of net24}
+            \includegraphics[width=\textwidth]{./figures/printer/ThreeBoxes.jpg}
+           \caption{Print of three boxes}
         \end{subfigure}
         \vskip\baselineskip
-        \begin{subfigure}[b] 
+        \begin{subfigure}[b] {0.475\textwidth}
             \centering 
-            \includegraphics[width=0.475\textwidth]{./figures/printer/FourBoxes.jpg}
-         %   \caption[]%
-           % {{\small Network 3}}    
-            \label{fig:mean and std of net34}
+            \includegraphics[width=\textwidth]{./figures/printer/FourBoxes.jpg}
+         \caption{Print of four boxes}
         \end{subfigure}
         \quad
-        \begin{subfigure}[b]  
+        \begin{subfigure}[b]  {0.475\textwidth}
             \centering 
-            \includegraphics[width=0.475\textwidth]{./figures/printer/SevenBoxes.jpg}
-          %  \caption[]%
-           % {{\small Network 4}}    
-            \label{fig:mean and std of net44}
+            \includegraphics[width=\textwidth]{./figures/printer/SevenBoxes.jpg}
+          \caption{Print of seven boxes}
         \end{subfigure}
-        \caption[ The average and standard deviation of critical parameters ]
-        {\small The average and standard deviation of critical parameters: Region R4} 
-        \label{fig:mean and std of nets}
-    \end{figure*}
+        \caption {3D assorted size printed boxes to contain accessory decoders for Kato turnouts.} 
+        \label{fig:decoderBoxes}
+    \end{figure}
     
+\section{Printing Structures and Rolling Stock}
+To be written.
